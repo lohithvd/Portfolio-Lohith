@@ -157,13 +157,12 @@ const Projects: React.FC = () => {
       React: "bg-blue-500/20 text-blue-300 border-blue-500/20",
       "Next.js": "bg-gray-500/20 text-gray-300 border-gray-500/20",
       TypeScript: "bg-blue-600/20 text-blue-300 border-blue-600/20",
-      "Tailwind CSS": "bg-cyan-500/20 text-cyan-300 border-cyan-500/20",
+      Tailwind: "bg-cyan-500/20 text-cyan-300 border-cyan-500/20",
       Flutter: "bg-blue-400/20 text-blue-300 border-blue-400/20",
-      Riverpod: "bg-purple-500/20 text-purple-300 border-purple-500/20",
-      "TMDB API": "bg-red-500/20 text-red-300 border-red-500/20",
-      "Method Channels": "bg-green-500/20 text-green-300 border-green-500/20",
       Go: "bg-cyan-600/20 text-cyan-300 border-cyan-600/20",
       PostgreSQL: "bg-blue-700/20 text-blue-300 border-blue-700/20",
+      Dart: "bg-sky-500/20 text-sky-300 border-sky-500/20",
+      "Charm.sh": "bg-pink-500/20 text-pink-300 border-pink-500/20",
       default: "bg-emerald-500/10 text-emerald-300 border-emerald-500/20",
     };
 
@@ -333,25 +332,21 @@ const Projects: React.FC = () => {
                       className="object-cover transition-transform duration-700 group-hover:scale-110"
                     />
                   )}
-
-                  {/* Gradient overlay */}
-                  {/* <div className="absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/60 to-transparent" /> */}
-
-                  {/* Project type badge */}
-                  {/* {project.type && ( */}
-                  {/*   <div className="absolute top-4 right-4 bg-emerald-500/90 backdrop-blur-sm text-white text-xs font-medium px-2.5 py-1 rounded-full shadow-lg z-10"> */}
-                  {/*     {project.type} */}
-                  {/*   </div> */}
-                  {/* )} */}
                 </div>
 
                 {/* Project content */}
                 <div className="p-6 pt-4 flex flex-col flex-grow">
                   {/* Project title with animated underline */}
-                  <div className="relative inline-block">
-                    <h3 className="text-xl font-semibold text-white mb-1 inline-block">
+                  <div className="flex items-center space-x-2">
+                    <h3 className="text-xl font-semibold text-white">
                       {project.title}
                     </h3>
+                    {/* Project type badge */}
+                    {project.type && (
+                      <div className="inline-flex items-center justify-center bg-emerald-500/10 text-emerald-300 border-emerald-500/20 text-xs font-semibold px-2 py-0.5 rounded-full shadow-inner">
+                        {project.type}
+                      </div>
+                    )}
                   </div>
 
                   {/* Project description */}

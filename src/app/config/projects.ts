@@ -22,10 +22,10 @@ export const projects: Project[] = [
     title: "Shortly",
     description:
       "A comprehensive, modern URL shortener featuring user accounts, link management, and an analytics dashboard.",
-    tags: ["Go", "Postgres"],
+    tags: ["Go", "PostgreSQL"],
     githubLink: "https://github.com/PraveenGongada/Shortly",
     liveLink: "https://shortly-go.vercel.app/",
-    type: "Full Stack",
+    type: "Backend",
     thumbnail:
       "https://raw.githubusercontent.com/PraveenGongada/Shortly/refs/heads/main/frontend/docs/images/thumbnail.png",
     carouselImages: [
@@ -47,7 +47,7 @@ export const projects: Project[] = [
     tags: ["Go", "Charm.sh"],
     githubLink: "https://github.com/PraveenGongada/Catalyst",
     liveLink: "",
-    type: "cli",
+    type: "CLI",
     thumbnail:
       "https://raw.githubusercontent.com/PraveenGongada/Catalyst/refs/heads/main/docs/images/deployment-summary.png",
     gifUrl:
