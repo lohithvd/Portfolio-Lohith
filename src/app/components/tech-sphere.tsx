@@ -19,7 +19,6 @@
 import React, { useEffect, useMemo, useState, memo } from "react";
 import { Cloud, fetchSimpleIcons, renderSimpleIcon } from "react-icon-cloud";
 import type { SimpleIcon } from "react-icon-cloud";
-import { skills } from "@/app/config/skills";
 import Image from "next/image";
 
 interface IconData {
@@ -27,47 +26,42 @@ interface IconData {
   [key: string]: unknown;
 }
 
-const extractIconSlugs = () => {
-  const iconMapping: Record<string, string> = {
-    React: "react",
-    "Next.js": "nextdotjs",
-    TypeScript: "typescript",
-    JavaScript: "javascript",
-    "Tailwind CSS": "tailwindcss",
-    Flutter: "flutter",
-    "React Native": "react",
-    Java: "java",
-    Swift: "swift",
-    Go: "go",
-    Nvim: "neovim",
-    "Node.js": "nodedotjs",
-    Express: "express",
-    PostgreSQL: "postgresql",
-    Firebase: "firebase",
-    Redis: "redis",
-    Kubernetes: "kubernetes",
-    Helm: "helm",
-    Jenkins: "jenkins",
-    "GitHub Actions": "githubactions",
-    AWS: "amazonaws",
-    Prometheus: "prometheus",
-    Grafana: "grafana",
-    Kibana: "kibana",
-    Logstash: "logstash",
-    ElasticSearch: "elasticsearch",
-    Kafka: "apachekafka",
-  };
-
-  const slugs = skills
-    .flatMap((category) => category.technologies)
-    .map(
-      (tech) =>
-        iconMapping[tech.name] || tech.name.toLowerCase().replace(/\s+/g, "")
-    )
-    .filter(Boolean);
-
-  return [...new Set(slugs)];
-};
+const techIcons = [
+  "react",
+  "nextdotjs",
+  "typescript",
+  "javascript",
+  "tailwindcss",
+  "flutter",
+  "swift",
+  "go",
+  "neovim",
+  "nodedotjs",
+  "express",
+  "postgresql",
+  "firebase",
+  "redis",
+  "kubernetes",
+  "helm",
+  "jenkins",
+  "githubactions",
+  "amazonwebservices",
+  "prometheus",
+  "grafana",
+  "kibana",
+  "logstash",
+  "elasticsearch",
+  "apachekafka",
+  "python",
+  "rust",
+  "docker",
+  "git",
+  "html5",
+  "css3",
+  "sass",
+  "angular",
+  "mongodb",
+];
 
 const cloudProps = {
   containerProps: {
@@ -121,11 +115,10 @@ const renderCustomIcon = (icon: SimpleIcon, theme: string) => {
 const TechSphereComponent = () => {
   const [data, setData] = useState<IconData | null>(null);
   const [loading, setLoading] = useState(true);
-  const iconSlugs = useMemo(() => extractIconSlugs(), []);
-
   const theme = "dark";
 
   useEffect(() => {
+    const iconSlugs = [...new Set(techIcons)];
     if (iconSlugs.length > 0) {
       setLoading(true);
       fetchSimpleIcons({ slugs: iconSlugs })
@@ -138,12 +131,12 @@ const TechSphereComponent = () => {
           setLoading(false);
         });
     }
-  }, [iconSlugs]);
+  }, []);
 
   const renderedIcons = useMemo(() => {
     if (!data) return null;
-    return Object.values(data.simpleIcons).map((icon) =>
-      renderCustomIcon(icon as SimpleIcon, theme)
+    return Object.values(data.simpleIcons).map((icon: SimpleIcon) =>
+      renderCustomIcon(icon, theme)
     );
   }, [data, theme]);
 
@@ -152,7 +145,7 @@ const TechSphereComponent = () => {
       <div className="flex items-center justify-center h-full">
         <div className="animate-pulse flex flex-col items-center">
           <div className="w-16 h-16 bg-emerald-500/20 rounded-full"></div>
-          <p className="mt-4 text-gray-400">Loading skills...</p>
+          <p className="mt-4 text-gray-400">Loading visualization...</p>
         </div>
       </div>
     );
