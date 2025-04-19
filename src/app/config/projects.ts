@@ -28,16 +28,16 @@ export const projects: Project[] = [
     type: "Full Stack",
     thumbnail:
       "https://raw.githubusercontent.com/PraveenGongada/Shortly/refs/heads/main/frontend/docs/images/thumbnail.png",
-      carouselImages: [
-        "https://raw.githubusercontent.com/PraveenGongada/Shortly/refs/heads/main/frontend/docs/images/register.png",
-        "https://raw.githubusercontent.com/PraveenGongada/Shortly/refs/heads/main/frontend/docs/images/dashboard.png",
-        "https://raw.githubusercontent.com/PraveenGongada/Shortly/refs/heads/main/frontend/docs/images/create.png",
-        "https://raw.githubusercontent.com/PraveenGongada/Shortly/refs/heads/main/frontend/docs/images/delete.png"
-      ],
-      carouselConfig: {
-        interval: 2000,
-        infinite: true,
-      },
+    carouselImages: [
+      "https://raw.githubusercontent.com/PraveenGongada/Shortly/refs/heads/main/frontend/docs/images/register.png",
+      "https://raw.githubusercontent.com/PraveenGongada/Shortly/refs/heads/main/frontend/docs/images/dashboard.png",
+      "https://raw.githubusercontent.com/PraveenGongada/Shortly/refs/heads/main/frontend/docs/images/create.png",
+      "https://raw.githubusercontent.com/PraveenGongada/Shortly/refs/heads/main/frontend/docs/images/delete.png",
+    ],
+    carouselConfig: {
+      interval: 2000,
+      infinite: true,
+    },
   },
   {
     id: 2,
@@ -50,7 +50,8 @@ export const projects: Project[] = [
     type: "cli",
     thumbnail:
       "https://raw.githubusercontent.com/PraveenGongada/Catalyst/refs/heads/main/docs/images/deployment-summary.png",
-    gifUrl: "https://raw.githubusercontent.com/PraveenGongada/Catalyst/refs/heads/main/docs/images/catalyst-demo.gif",
+    gifUrl:
+      "https://raw.githubusercontent.com/PraveenGongada/Catalyst/refs/heads/main/docs/images/catalyst-demo.gif",
   },
   {
     id: 3,

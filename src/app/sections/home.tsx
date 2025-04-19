@@ -33,8 +33,23 @@ const Home: React.FC<HomeProps> = ({ onConnectClick }) => {
   const [index, setIndex] = useState(0);
   const [currentPhrase, setCurrentPhrase] = useState(0);
 
+  const [shouldAnimate, setShouldAnimate] = useState(true);
+
+  useEffect(() => {
+    const isMobile = window.innerWidth < 768;
+    const prefersReducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    ).matches;
+
+    if (isMobile || prefersReducedMotion) {
+      setShouldAnimate(false);
+    }
+  }, []);
+
   // Handle typing effect
   useEffect(() => {
+    if (!shouldAnimate) return;
+
     if (index < config.typingTexts[currentPhrase].length) {
       const timeout = setTimeout(() => {
         setText((prev) => prev + config.typingTexts[currentPhrase][index]);
@@ -49,7 +64,7 @@ const Home: React.FC<HomeProps> = ({ onConnectClick }) => {
       }, 2000);
       return () => clearTimeout(timeout);
     }
-  }, [index, currentPhrase, config.typingTexts]);
+  }, [shouldAnimate, index, currentPhrase, config.typingTexts]);
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -73,7 +88,7 @@ const Home: React.FC<HomeProps> = ({ onConnectClick }) => {
   return (
     <section
       id="home"
-      className="min-h-screen w-full flex items-center relative pt-24 md:pt-24 lg:pt-16 pb-12 overflow-hidden"
+      className="min-h-screen w-full flex items-center relative pt-24 md:pt-24 lg:pt-16 pb-16 md:pb-12 overflow-hidden"
     >
       {/* Background elements */}
       <div className="absolute inset-0 overflow-hidden">
@@ -143,13 +158,24 @@ const Home: React.FC<HomeProps> = ({ onConnectClick }) => {
               className="h-12 mb-8 overflow-hidden"
             >
               <div className="relative h-full flex items-center justify-center lg:justify-start">
-                <span className="text-xl sm:text-2xl text-gray-300 flex flex-wrap">
-                  <span className="mr-2">I&apos;m passionate about</span>
-                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-blue-500">
-                    {text}
+                {!shouldAnimate ? (
+                  // For mobile
+                  <span className="text-xl sm:text-2xl text-gray-300 flex justify-center flex-wrap">
+                    <span className="mr-2">I&apos;m passionate about</span>
+                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-blue-500">
+                      {config.typingTexts[0]}
+                    </span>
                   </span>
-                  <span className="animate-blink ml-1 h-6 w-0.5 bg-emerald-400 self-center"></span>
-                </span>
+                ) : (
+                  // For desktop
+                  <span className="text-xl sm:text-2xl text-gray-300 flex flex-wrap">
+                    <span className="mr-2">I&apos;m passionate about</span>
+                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-blue-500">
+                      {text}
+                    </span>
+                    <span className="animate-blink ml-1 h-6 w-0.5 bg-emerald-400 self-center"></span>
+                  </span>
+                )}
               </div>
             </motion.div>
 
@@ -202,7 +228,7 @@ const Home: React.FC<HomeProps> = ({ onConnectClick }) => {
 
           {/* Interactive Tech Sphere */}
           <motion.div
-            className="lg:col-span-5 h-[280px] sm:h-[320px] md:h-[340px] lg:h-[350px] relative mt-2 sm:mt-0 sm:mb-16"
+            className="lg:col-span-5 h-[280px] sm:h-[320px] md:h-[340px] lg:h-[350px] relative mt-2 sm:mt-0 mb-16 sm:mb-16"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.7, delay: 0.3 }}
@@ -218,7 +244,7 @@ const Home: React.FC<HomeProps> = ({ onConnectClick }) => {
 
       {/* Scroll indicator */}
       <motion.div
-        className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex flex-col items-center"
+        className="absolute bottom-4 md:bottom-8 left-1/2 transform -translate-x-1/2 flex flex-col items-center z-20"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.5 }}
