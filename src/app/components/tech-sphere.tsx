@@ -14,12 +14,12 @@
  * limitations under the License.
  */
 
-"use client";
+'use client';
 
-import React, { useEffect, useMemo, useState, memo } from "react";
-import { Cloud, fetchSimpleIcons, renderSimpleIcon } from "react-icon-cloud";
-import type { SimpleIcon } from "react-icon-cloud";
-import Image from "next/image";
+import React, { useEffect, useMemo, useState, memo } from 'react';
+import { Cloud, fetchSimpleIcons, renderSimpleIcon } from 'react-icon-cloud';
+import type { SimpleIcon } from 'react-icon-cloud';
+import Image from 'next/image';
 
 interface IconData {
   simpleIcons: Record<string, SimpleIcon>;
@@ -27,46 +27,46 @@ interface IconData {
 }
 
 const techIcons = [
-  "react",
-  "nextdotjs",
-  "typescript",
-  "javascript",
-  "tailwindcss",
-  "flutter",
-  "swift",
-  "go",
-  "neovim",
-  "nodedotjs",
-  "express",
-  "postgresql",
-  "firebase",
-  "redis",
-  "kubernetes",
-  "helm",
-  "jenkins",
-  "githubactions",
-  "amazonwebservices",
-  "prometheus",
-  "grafana",
-  "kibana",
-  "logstash",
-  "elasticsearch",
-  "apachekafka",
-  "python",
-  "rust",
-  "docker",
-  "git",
+  'react',
+  'nextdotjs',
+  'typescript',
+  'javascript',
+  'tailwindcss',
+  'flutter',
+  'swift',
+  'go',
+  'neovim',
+  'nodedotjs',
+  'express',
+  'postgresql',
+  'firebase',
+  'redis',
+  'kubernetes',
+  'helm',
+  'jenkins',
+  'githubactions',
+  'amazonwebservices',
+  'prometheus',
+  'grafana',
+  'kibana',
+  'logstash',
+  'elasticsearch',
+  'apachekafka',
+  'python',
+  'rust',
+  'docker',
+  'git',
 ];
 
 const cloudProps = {
   containerProps: {
     style: {
-      display: "flex",
-      justifyContent: "center",
-      alignItems: "center",
-      width: "100%",
-      height: "100%",
-      transform: "scale(0.9)",
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center',
+      width: '100%',
+      height: '100%',
+      transform: 'scale(0.9)',
     },
   },
   options: {
@@ -74,11 +74,11 @@ const cloudProps = {
     depth: 0.8,
     wheelZoom: false,
     imageScale: 1.4,
-    activeCursor: "default",
+    activeCursor: 'default',
     initial: [0.1, -0.1],
     clickToFront: 500,
     tooltipDelay: 0,
-    outlineColour: "#000",
+    outlineColour: '#000',
     maxSpeed: 0.04,
     minSpeed: 0.02,
     radiusX: 0.95,
@@ -88,9 +88,9 @@ const cloudProps = {
 };
 
 const renderCustomIcon = (icon: SimpleIcon, theme: string) => {
-  const bgHex = theme === "light" ? "#f3f2ef" : "#080510";
-  const fallbackHex = theme === "light" ? "#6e6e73" : "#ffffff";
-  const minContrastRatio = theme === "dark" ? 2 : 1.2;
+  const bgHex = theme === 'light' ? '#f3f2ef' : '#080510';
+  const fallbackHex = theme === 'light' ? '#6e6e73' : '#ffffff';
+  const minContrastRatio = theme === 'dark' ? 2 : 1.2;
 
   return renderSimpleIcon({
     icon,
@@ -110,19 +110,19 @@ const renderCustomIcon = (icon: SimpleIcon, theme: string) => {
 const TechSphereComponent = () => {
   const [data, setData] = useState<IconData | null>(null);
   const [loading, setLoading] = useState(true);
-  const theme = "dark";
+  const theme = 'dark';
 
   useEffect(() => {
     const iconSlugs = [...new Set(techIcons)];
     if (iconSlugs.length > 0) {
       setLoading(true);
       fetchSimpleIcons({ slugs: iconSlugs })
-        .then((result) => {
+        .then(result => {
           setData(result);
           setLoading(false);
         })
-        .catch((error) => {
-          console.error("Error fetching icons:", error);
+        .catch(error => {
+          console.error('Error fetching icons:', error);
           setLoading(false);
         });
     }
@@ -130,9 +130,7 @@ const TechSphereComponent = () => {
 
   const renderedIcons = useMemo(() => {
     if (!data) return null;
-    return Object.values(data.simpleIcons).map((icon: SimpleIcon) =>
-      renderCustomIcon(icon, theme)
-    );
+    return Object.values(data.simpleIcons).map((icon: SimpleIcon) => renderCustomIcon(icon, theme));
   }, [data, theme]);
 
   if (loading) {
@@ -159,7 +157,7 @@ const TechSphereComponent = () => {
             <>{renderedIcons}</>
             {customImages.length > 0 &&
               customImages.map((image, index) => (
-                <a key={index} href="#" onClick={(e) => e.preventDefault()}>
+                <a key={index} href="#" onClick={e => e.preventDefault()}>
                   <Image src={image} alt="Custom icon" width={36} height={36} />
                 </a>
               ))}

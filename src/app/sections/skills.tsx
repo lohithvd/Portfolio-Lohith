@@ -14,11 +14,11 @@
  * limitations under the License.
  */
 
-import React from "react";
-import Image from "next/image";
-import { motion } from "framer-motion";
-import { skills } from "@/app/config/skills";
-import { isMinimal } from "@/app/utils";
+import React from 'react';
+import Image from 'next/image';
+import { motion } from 'framer-motion';
+import { skills } from '@/app/config/skills';
+import { isMinimal } from '@/app/utils';
 
 const CategoryIcons = {
   Frontend: () => (
@@ -31,15 +31,7 @@ const CategoryIcons = {
       strokeLinejoin="round"
       className="w-4 h-4"
     >
-      <rect
-        x="3"
-        y="3"
-        width="18"
-        height="18"
-        rx="2"
-        ry="2"
-        stroke="#60a5fa"
-      ></rect>
+      <rect x="3" y="3" width="18" height="18" rx="2" ry="2" stroke="#60a5fa"></rect>
       <line x1="9" y1="3" x2="9" y2="21" stroke="#60a5fa"></line>
     </svg>
   ),
@@ -53,24 +45,8 @@ const CategoryIcons = {
       strokeLinejoin="round"
       className="w-4 h-4"
     >
-      <rect
-        x="2"
-        y="2"
-        width="20"
-        height="8"
-        rx="2"
-        ry="2"
-        stroke="#4ade80"
-      ></rect>
-      <rect
-        x="2"
-        y="14"
-        width="20"
-        height="8"
-        rx="2"
-        ry="2"
-        stroke="#4ade80"
-      ></rect>
+      <rect x="2" y="2" width="20" height="8" rx="2" ry="2" stroke="#4ade80"></rect>
+      <rect x="2" y="14" width="20" height="8" rx="2" ry="2" stroke="#4ade80"></rect>
       <line x1="6" y1="6" x2="6.01" y2="6" stroke="#4ade80"></line>
       <line x1="6" y1="18" x2="6.01" y2="18" stroke="#4ade80"></line>
     </svg>
@@ -85,24 +61,12 @@ const CategoryIcons = {
       strokeLinejoin="round"
       className="w-4 h-4"
     >
-      <rect
-        x="5"
-        y="2"
-        width="14"
-        height="20"
-        rx="2"
-        ry="2"
-        stroke="#f472b6"
-      ></rect>
+      <rect x="5" y="2" width="14" height="20" rx="2" ry="2" stroke="#f472b6"></rect>
       <line x1="12" y1="18" x2="12.01" y2="18" stroke="#f472b6"></line>
     </svg>
   ),
   DevOps: () => (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 24 24"
-      className="w-4 h-4"
-    >
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" className="w-4 h-4">
       <line
         x1="16.5"
         y1="9.4"
@@ -191,19 +155,17 @@ const Skills: React.FC = () => {
       };
 
   const getCategoryIcon = (category: string) => {
-    const Icon =
-      CategoryIcons[category as keyof typeof CategoryIcons] ||
-      CategoryIcons.Default;
+    const Icon = CategoryIcons[category as keyof typeof CategoryIcons] || CategoryIcons.Default;
     return <Icon />;
   };
 
   const generateShadowStyle = (color: string) => {
     const rgbColor =
       color
-        .replace("#", "")
+        .replace('#', '')
         .match(/.{2}/g)
         ?.map((hex: string) => parseInt(hex, 16))
-        .join(", ") || "0, 0, 0";
+        .join(', ') || '0, 0, 0';
 
     return {
       borderColor: `${color}20`,
@@ -219,20 +181,19 @@ const Skills: React.FC = () => {
           className="text-center mb-16"
           initial={isMinimal ? {} : { opacity: 0, y: 20 }}
           whileInView={isMinimal ? {} : { opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
+          viewport={{ once: true, margin: '-100px' }}
           transition={{ duration: 0.5 }}
         >
           <h2 className="text-3xl md:text-4xl font-bold text-white">
-            Technical{" "}
+            Technical{' '}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-blue-500">
               Skills
             </span>
           </h2>
           <div className="mt-4 h-1 w-20 bg-gradient-to-r from-emerald-400 to-blue-500 mx-auto rounded-full" />
           <p className="mt-6 text-gray-300 max-w-2xl mx-auto">
-            I&apos;ve gained proficiency in various technologies throughout my
-            career. Here are the key tools and frameworks I use to build
-            exceptional products.
+            I&apos;ve gained proficiency in various technologies throughout my career. Here are the
+            key tools and frameworks I use to build exceptional products.
           </p>
         </motion.div>
 
@@ -242,10 +203,8 @@ const Skills: React.FC = () => {
               key={skillGroup.category}
               initial={sectionVariants.initial}
               whileInView={sectionVariants.animate}
-              transition={
-                isMinimal ? {} : { duration: 0.5, delay: index * 0.1 }
-              }
-              viewport={{ once: true, margin: "-100px" }}
+              transition={isMinimal ? {} : { duration: 0.5, delay: index * 0.1 }}
+              viewport={{ once: true, margin: '-100px' }}
               className="bg-gray-800/40 backdrop-blur-sm rounded-2xl p-6 border border-gray-700/50 hover:border-emerald-500/30 transition-all duration-300 shadow-lg"
             >
               <h3 className="text-xl font-semibold text-gray-200 mb-4 flex items-center gap-2">
@@ -268,7 +227,7 @@ const Skills: React.FC = () => {
                         width={16}
                         height={16}
                         className="w-4 h-4"
-                        style={{ filter: "brightness(1.2)" }}
+                        style={{ filter: 'brightness(1.2)' }}
                       />
                       <span className="text-sm text-gray-300">{tech.name}</span>
                     </div>

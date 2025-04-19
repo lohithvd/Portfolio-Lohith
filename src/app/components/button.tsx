@@ -14,20 +14,20 @@
  * limitations under the License.
  */
 
-"use client";
+'use client';
 
-import React from "react";
-import { motion } from "framer-motion";
+import React from 'react';
+import { motion } from 'framer-motion';
 
 interface ButtonProps {
   href: string;
   label: string;
   icon: React.ReactNode;
-  variant?: "primary" | "secondary" | "outline";
+  variant?: 'primary' | 'secondary' | 'outline';
   onClick?: (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => void;
   target?: string;
   rel?: string;
-  iconType?: "arrow" | "default";
+  iconType?: 'arrow' | 'default';
   className?: string;
 }
 
@@ -35,24 +35,24 @@ export const Button: React.FC<ButtonProps> = ({
   href,
   label,
   icon,
-  variant = "primary",
+  variant = 'primary',
   onClick,
   target,
   rel,
-  iconType = "default",
-  className = "",
+  iconType = 'default',
+  className = '',
 }) => {
   // Base classes for all buttons
   const baseClasses =
-    "group relative px-6 py-3 rounded-full font-medium flex items-center justify-center transition-all duration-300";
+    'group relative px-6 py-3 rounded-full font-medium flex items-center justify-center transition-all duration-300';
 
   // Variant-specific classes
   const variantClasses = {
     primary:
-      "bg-gradient-to-r from-emerald-600 to-blue-600 text-white shadow-lg shadow-emerald-600/20 hover:shadow-emerald-600/40",
+      'bg-gradient-to-r from-emerald-600 to-blue-600 text-white shadow-lg shadow-emerald-600/20 hover:shadow-emerald-600/40',
     secondary:
-      "bg-gray-800/60 text-white backdrop-blur-sm border border-gray-700 hover:bg-gray-700/60 hover:border-emerald-500/30 shadow-lg hover:shadow-emerald-500/10 hover:translate-y-[-3px]",
-    outline: "text-white border border-gray-600 hover:border-emerald-500/50",
+      'bg-gray-800/60 text-white backdrop-blur-sm border border-gray-700 hover:bg-gray-700/60 hover:border-emerald-500/30 shadow-lg hover:shadow-emerald-500/10 hover:translate-y-[-3px]',
+    outline: 'text-white border border-gray-600 hover:border-emerald-500/50',
   };
 
   return (
@@ -67,7 +67,7 @@ export const Button: React.FC<ButtonProps> = ({
       <span className="flex items-center">
         <span>{label}</span>
 
-        {iconType === "arrow" ? (
+        {iconType === 'arrow' ? (
           <motion.div
             className="ml-2 inline-flex"
             initial={{ x: 0 }}

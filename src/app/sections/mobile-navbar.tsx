@@ -14,9 +14,9 @@
  * limitations under the License.
  */
 
-import React from "react";
-import { AnimatePresence, motion } from "framer-motion";
-import { portfolioConfig } from "@/app/config";
+import React from 'react';
+import { AnimatePresence, motion } from 'framer-motion';
+import { portfolioConfig } from '@/app/config';
 
 interface MobileNavBarProps {
   menuOpen: boolean;
@@ -24,11 +24,7 @@ interface MobileNavBarProps {
   setMenuOpen: (menuOpen: boolean) => void;
 }
 
-const MobileNavBar: React.FC<MobileNavBarProps> = ({
-  menuOpen,
-  activeSection,
-  setMenuOpen,
-}) => {
+const MobileNavBar: React.FC<MobileNavBarProps> = ({ menuOpen, activeSection, setMenuOpen }) => {
   const { links } = portfolioConfig.navigation;
 
   const menuVariants = {
@@ -48,7 +44,7 @@ const MobileNavBar: React.FC<MobileNavBarProps> = ({
           animate="open"
           exit="closed"
           variants={menuVariants}
-          transition={{ duration: 0.4, ease: "easeOut" }}
+          transition={{ duration: 0.4, ease: 'easeOut' }}
           className="fixed inset-0 z-40 lg:hidden"
         >
           {/* Backdrop with blur effect */}
@@ -76,8 +72,8 @@ const MobileNavBar: React.FC<MobileNavBarProps> = ({
                     className={`text-3xl font-medium transition-all duration-300 hover:text-emerald-400 relative
                       ${
                         activeSection === link.href
-                          ? "text-emerald-400 font-semibold"
-                          : "text-gray-200"
+                          ? 'text-emerald-400 font-semibold'
+                          : 'text-gray-200'
                       }`}
                   >
                     {link.label}

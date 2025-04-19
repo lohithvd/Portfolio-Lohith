@@ -1,5 +1,4 @@
-
 export const isMinimal =
-  typeof window === "undefined" ||
+  typeof window === 'undefined' ||
   window.innerWidth < 768 ||
-  window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  window.matchMedia('(prefers-reduced-motion: reduce)').matches;

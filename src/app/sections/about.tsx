@@ -14,13 +14,13 @@
  * limitations under the License.
  */
 
-"use client";
+'use client';
 
-import React from "react";
-import { motion } from "framer-motion";
-import { Code, Rocket, Lightbulb, BarChart3 } from "lucide-react";
-import { portfolioConfig } from "@/app/config";
-import { isMinimal } from "@/app/utils";
+import React from 'react';
+import { motion } from 'framer-motion';
+import { Code, Rocket, Lightbulb, BarChart3 } from 'lucide-react';
+import { portfolioConfig } from '@/app/config';
+import { isMinimal } from '@/app/utils';
 
 const About = () => {
   const config = portfolioConfig.sections.about;
@@ -53,16 +53,12 @@ const About = () => {
         visible: {
           opacity: 1,
           y: 0,
-          transition: { duration: 0.6, ease: "easeOut" },
+          transition: { duration: 0.6, ease: 'easeOut' },
         },
       };
 
   return (
-    <section
-      id="about"
-      className="py-24 relative"
-      aria-labelledby="about-title"
-    >
+    <section id="about" className="py-24 relative" aria-labelledby="about-title">
       {/* Decorative elements */}
       <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-emerald-500/30 to-transparent" />
       <div className="absolute -left-20 top-40 w-64 h-64 bg-blue-500/5 rounded-full blur-3xl" />
@@ -74,14 +70,11 @@ const About = () => {
           className="text-center mb-16"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
+          viewport={{ once: true, margin: '-100px' }}
           transition={{ duration: 0.5 }}
         >
-          <h2
-            id="about-title"
-            className="text-3xl md:text-4xl font-bold text-white"
-          >
-            {config.title}{" "}
+          <h2 id="about-title" className="text-3xl md:text-4xl font-bold text-white">
+            {config.title}{' '}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-blue-500">
               {config.subtitle}
             </span>
@@ -95,14 +88,12 @@ const About = () => {
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
+            viewport={{ once: true, margin: '-100px' }}
             transition={{ duration: 0.5, delay: 0.2 }}
             className="h-full"
           >
             <div className="bg-gray-800/40 backdrop-blur-sm rounded-2xl p-8 border border-gray-700/50 hover:border-emerald-500/30 transition-all duration-300 shadow-xl h-full relative overflow-hidden">
-              <h3 className="text-2xl font-semibold text-white mb-6 relative">
-                My Journey
-              </h3>
+              <h3 className="text-2xl font-semibold text-white mb-6 relative">My Journey</h3>
 
               {/* Bio paragraphs */}
               <div className="space-y-4 relative">
@@ -133,7 +124,7 @@ const About = () => {
             variants={containerVariants}
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true, margin: "-100px" }}
+            viewport={{ once: true, margin: '-100px' }}
             className="h-full"
           >
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 h-full">
@@ -156,12 +147,8 @@ const About = () => {
                       {getIconComponent(quality.icon)}
                     </div>
 
-                    <h4 className="text-lg font-semibold text-white mb-2">
-                      {quality.title}
-                    </h4>
-                    <p className="text-gray-300 text-sm">
-                      {quality.description}
-                    </p>
+                    <h4 className="text-lg font-semibold text-white mb-2">{quality.title}</h4>
+                    <p className="text-gray-300 text-sm">{quality.description}</p>
                   </div>
                 </motion.div>
               ))}

@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-import { Project, Skill, Social } from "./types";
+import { Project, Skill, Social } from './types';
 
 /**
  * Main configuration interface for the entire portfolio

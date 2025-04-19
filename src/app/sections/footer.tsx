@@ -14,8 +14,8 @@
  * limitations under the License.
  */
 
-import React from "react";
-import { portfolioConfig } from "@/app/config";
+import React from 'react';
+import { portfolioConfig } from '@/app/config';
 
 const Footer: React.FC = () => {
   const { copyright, tagline } = portfolioConfig.footer;

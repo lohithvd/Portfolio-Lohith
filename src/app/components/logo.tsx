@@ -14,11 +14,11 @@
  * limitations under the License.
  */
 
-"use client";
+'use client';
 
-import React from "react";
-import { motion } from "framer-motion";
-import portfolioConfig from "@/app/config";
+import React from 'react';
+import { motion } from 'framer-motion';
+import portfolioConfig from '@/app/config';
 
 const Logo: React.FC = () => {
   const { logo } = portfolioConfig.navigation;
@@ -35,7 +35,7 @@ const Logo: React.FC = () => {
         animate={{ x: 0, opacity: 1 }}
         transition={{ duration: 0.3 }}
       >
-        {"{"}
+        {'{'}
       </motion.span>
 
       {/* Initials */}
@@ -55,7 +55,7 @@ const Logo: React.FC = () => {
         animate={{ x: 0, opacity: 1 }}
         transition={{ duration: 0.3, delay: 0.2 }}
       >
-        {"}"}
+        {'}'}
       </motion.span>
     </motion.div>
   );

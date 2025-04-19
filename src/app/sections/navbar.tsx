@@ -14,17 +14,14 @@
  * limitations under the License.
  */
 
-import React from "react";
-import { motion } from "framer-motion";
-import { portfolioConfig } from "@/app/config";
-import { Logo } from "@/app/components/logo";
+import React from 'react';
+import { motion } from 'framer-motion';
+import { portfolioConfig } from '@/app/config';
+import { Logo } from '@/app/components/logo';
 
 interface NavBarProps {
   activeSection: string;
-  onSectionNav: (
-    e: React.MouseEvent<HTMLAnchorElement>,
-    sectionId: string
-  ) => void;
+  onSectionNav: (e: React.MouseEvent<HTMLAnchorElement>, sectionId: string) => void;
 }
 
 const NavBar: React.FC<NavBarProps> = ({ activeSection, onSectionNav }) => {
@@ -42,7 +39,7 @@ const NavBar: React.FC<NavBarProps> = ({ activeSection, onSectionNav }) => {
           {/* Logo Section */}
           <div className="flex-shrink-0">
             <a
-              onClick={(e) => onSectionNav(e, "home")}
+              onClick={e => onSectionNav(e, 'home')}
               className="font-medium text-xl tracking-wider text-gray-100"
             >
               <Logo />
@@ -56,7 +53,7 @@ const NavBar: React.FC<NavBarProps> = ({ activeSection, onSectionNav }) => {
                 <motion.a
                   key={link.href}
                   href={`#${link.href}`}
-                  onClick={(e) => onSectionNav(e, link.href)}
+                  onClick={e => onSectionNav(e, link.href)}
                   initial={linkVariants.initial}
                   animate={linkVariants.animate}
                   transition={{
@@ -67,11 +64,7 @@ const NavBar: React.FC<NavBarProps> = ({ activeSection, onSectionNav }) => {
                     transition-all 
                     duration-300 
                     hover:text-emerald-400 
-                    ${
-                      activeSection === link.href
-                        ? "text-emerald-400"
-                        : "text-gray-300"
-                    }
+                    ${activeSection === link.href ? 'text-emerald-400' : 'text-gray-300'}
                   `}
                 >
                   {link.label}

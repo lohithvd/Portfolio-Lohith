@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-import { ReactElement } from "react";
+import { ReactElement } from 'react';
 
 // 🚀 Technology Type: Detailed Information for Each Tech Skill
 export interface Technology {

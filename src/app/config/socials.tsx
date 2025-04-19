@@ -14,32 +14,32 @@
  * limitations under the License.
  */
 
-import { Github, Instagram, Linkedin, Mail } from "lucide-react";
-import { Social } from "../types/types";
+import { Github, Instagram, Linkedin, Mail } from 'lucide-react';
+import { Social } from '../types/types';
 
 export const socials: Social[] = [
   {
-    name: "GitHub",
+    name: 'GitHub',
     icon: <Github size={20} />,
-    url: "https://github.com/praveengongada",
-    color: "#333333",
+    url: 'https://github.com/praveengongada',
+    color: '#333333',
   },
   {
-    name: "LinkedIn",
+    name: 'LinkedIn',
     icon: <Linkedin size={20} />,
-    url: "https://www.linkedin.com/in/praveengongada/",
-    color: "#0077B5",
+    url: 'https://www.linkedin.com/in/praveengongada/',
+    color: '#0077B5',
   },
   {
-    name: "Email",
+    name: 'Email',
     icon: <Mail size={20} />,
-    url: "mailto:praveengongada0603@gmail.com",
-    color: "#D44638",
+    url: 'mailto:praveengongada0603@gmail.com',
+    color: '#D44638',
   },
   {
-    name: "Instagram",
+    name: 'Instagram',
     icon: <Instagram size={20} />,
-    url: "https://www.instagram.com/praveen_gongada",
-    color: "#833AB4",
+    url: 'https://www.instagram.com/praveen_gongada',
+    color: '#833AB4',
   },
 ];

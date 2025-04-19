@@ -14,32 +14,32 @@
  * limitations under the License.
  */
 
-"use client";
+'use client';
 
-import Head from "next/head";
-import React, { useState, useEffect, useCallback } from "react";
-import { Skills } from "@/app/sections/skills";
-import { ConnectWithMe } from "@/app/sections/connect";
-import { Footer } from "@/app/sections/footer";
-import { Home } from "@/app/sections/home";
-import { Projects } from "@/app/sections/projects";
-import { About } from "@/app/sections/about";
-import { MobileNavBar } from "@/app/sections/mobile-navbar";
-import { NavBar } from "@/app/sections/navbar";
-import { Menu, X } from "lucide-react";
+import Head from 'next/head';
+import React, { useState, useEffect, useCallback } from 'react';
+import { Skills } from '@/app/sections/skills';
+import { ConnectWithMe } from '@/app/sections/connect';
+import { Footer } from '@/app/sections/footer';
+import { Home } from '@/app/sections/home';
+import { Projects } from '@/app/sections/projects';
+import { About } from '@/app/sections/about';
+import { MobileNavBar } from '@/app/sections/mobile-navbar';
+import { NavBar } from '@/app/sections/navbar';
+import { Menu, X } from 'lucide-react';
 
 export default function Page() {
-  const [activeSection, setActiveSection] = useState("home");
+  const [activeSection, setActiveSection] = useState('home');
   const [menuOpen, setMenuOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
     setMounted(true);
     const handleScroll = () => {
-      const sections = document.querySelectorAll("section");
-      let currentSection = "home";
+      const sections = document.querySelectorAll('section');
+      let currentSection = 'home';
 
-      sections.forEach((section) => {
+      sections.forEach(section => {
         const sectionTop = section.getBoundingClientRect().top + window.scrollY;
         if (window.scrollY >= sectionTop - 200) {
           currentSection = section.id;
@@ -49,9 +49,9 @@ export default function Page() {
       setActiveSection(currentSection);
     };
 
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener('scroll', handleScroll);
     return () => {
-      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener('scroll', handleScroll);
     };
   }, []);
 
@@ -61,8 +61,8 @@ export default function Page() {
 
     if (element) {
       element.scrollIntoView({
-        behavior: "smooth",
-        block: "start",
+        behavior: 'smooth',
+        block: 'start',
       });
     }
   }, []);
@@ -91,7 +91,7 @@ export default function Page() {
       <div className="fixed top-3.5 right-6 z-50 lg:hidden">
         <button
           onClick={() => setMenuOpen(!menuOpen)}
-          aria-label={menuOpen ? "Close Menu" : "Open Menu"}
+          aria-label={menuOpen ? 'Close Menu' : 'Open Menu'}
           className="p-2 bg-gray-800/80 backdrop-blur-sm rounded-full text-gray-100 shadow-lg border border-gray-700/50"
         >
           {menuOpen ? <X size={20} /> : <Menu size={20} />}
@@ -100,16 +100,12 @@ export default function Page() {
 
       <NavBar onSectionNav={handleSectionNav} activeSection={activeSection} />
 
-      <MobileNavBar
-        menuOpen={menuOpen}
-        activeSection={activeSection}
-        setMenuOpen={setMenuOpen}
-      />
+      <MobileNavBar menuOpen={menuOpen} activeSection={activeSection} setMenuOpen={setMenuOpen} />
 
       <main>
         <Home
-          onConnectClick={(e) => {
-            handleSectionNav(e, "connect");
+          onConnectClick={e => {
+            handleSectionNav(e, 'connect');
           }}
         />
         <About />

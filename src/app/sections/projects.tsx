@@ -14,21 +14,19 @@
  * limitations under the License.
  */
 
-import React, { useState, useEffect, useRef } from "react";
-import Image from "next/image";
-import { motion, AnimatePresence } from "framer-motion";
-import { ExternalLink, Github, ChevronLeft, ChevronRight } from "lucide-react";
-import { projects } from "@/app/config/projects";
-import { Button } from "@/app/components/button";
-import { isMinimal } from "@/app/utils";
+import React, { useState, useEffect, useRef } from 'react';
+import Image from 'next/image';
+import { motion, AnimatePresence } from 'framer-motion';
+import { ExternalLink, Github, ChevronLeft, ChevronRight } from 'lucide-react';
+import { projects } from '@/app/config/projects';
+import { Button } from '@/app/components/button';
+import { isMinimal } from '@/app/utils';
 
 const Projects: React.FC = () => {
   const [hoveredProject, setHoveredProject] = useState<number | null>(null);
   const [activeSlides, setActiveSlides] = useState<Record<number, number>>({});
   const carouselTimer = useRef<NodeJS.Timeout>(undefined);
-  const [slideDirection, setSlideDirection] = useState<
-    Record<number, "left" | "right">
-  >({});
+  const [slideDirection, setSlideDirection] = useState<Record<number, 'left' | 'right'>>({});
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -46,29 +44,29 @@ const Projects: React.FC = () => {
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.6, ease: "easeOut" },
+      transition: { duration: 0.6, ease: 'easeOut' },
     },
   };
 
   // Updated slide variants that depend on direction
   const getSlideVariants = (projectId: number) => {
-    const direction = slideDirection[projectId] || "right";
+    const direction = slideDirection[projectId] || 'right';
 
     return {
-      enter: { x: direction === "right" ? "100%" : "-100%" },
+      enter: { x: direction === 'right' ? '100%' : '-100%' },
       center: { x: 0 },
-      exit: { x: direction === "right" ? "-100%" : "100%" },
+      exit: { x: direction === 'right' ? '-100%' : '100%' },
     };
   };
 
   useEffect(() => {
     const initialActiveSlides: Record<number, number> = {};
-    const initialDirections: Record<number, "left" | "right"> = {};
+    const initialDirections: Record<number, 'left' | 'right'> = {};
 
-    projects.forEach((project) => {
+    projects.forEach(project => {
       if (project.carouselImages && project.carouselImages.length > 0) {
         initialActiveSlides[project.id] = 0;
-        initialDirections[project.id] = "right"; // Default direction
+        initialDirections[project.id] = 'right'; // Default direction
       }
     });
 
@@ -85,17 +83,16 @@ const Projects: React.FC = () => {
     clearTimeout(carouselTimer.current);
 
     if (hoveredProject !== null) {
-      const project = projects.find((p) => p.id === hoveredProject);
+      const project = projects.find(p => p.id === hoveredProject);
 
       if (project?.carouselImages && project.carouselImages.length > 1) {
         const startCarousel = () => {
           const interval = project.carouselConfig?.interval || 3000;
 
           carouselTimer.current = setTimeout(() => {
-            setSlideDirection((prev) => ({ ...prev, [project.id]: "right" }));
-            setActiveSlides((prev) => {
-              const nextSlide =
-                (prev[project.id] + 1) % project.carouselImages!.length;
+            setSlideDirection(prev => ({ ...prev, [project.id]: 'right' }));
+            setActiveSlides(prev => {
+              const nextSlide = (prev[project.id] + 1) % project.carouselImages!.length;
               return { ...prev, [project.id]: nextSlide };
             });
 
@@ -115,7 +112,7 @@ const Projects: React.FC = () => {
   }, [hoveredProject, activeSlides]);
 
   const navigateCarousel = (projectId: number, direction: number) => {
-    const project = projects.find((p) => p.id === projectId);
+    const project = projects.find(p => p.id === projectId);
     if (!project?.carouselImages) return;
 
     if (carouselTimer.current) {
@@ -123,29 +120,23 @@ const Projects: React.FC = () => {
     }
 
     if (!isMinimal) {
-      setSlideDirection((prev) => ({
+      setSlideDirection(prev => ({
         ...prev,
-        [projectId]: direction > 0 ? "right" : "left",
+        [projectId]: direction > 0 ? 'right' : 'left',
       }));
     }
 
     const imagesCount = project.carouselImages.length;
     const currentSlide = activeSlides[projectId] || 0;
-    const nextSlide =
-      (((currentSlide + direction) % imagesCount) + imagesCount) % imagesCount;
+    const nextSlide = (((currentSlide + direction) % imagesCount) + imagesCount) % imagesCount;
 
-    setActiveSlides((prev) => ({ ...prev, [projectId]: nextSlide }));
+    setActiveSlides(prev => ({ ...prev, [projectId]: nextSlide }));
 
-    if (
-      !isMinimal &&
-      hoveredProject === projectId &&
-      project.carouselConfig?.infinite !== false
-    ) {
+    if (!isMinimal && hoveredProject === projectId && project.carouselConfig?.infinite !== false) {
       const interval = Math.max(3000, project.carouselConfig?.interval || 3000);
       carouselTimer.current = setTimeout(() => {
-        setActiveSlides((prev) => {
-          const nextAutoSlide =
-            (prev[projectId] + 1) % project.carouselImages!.length;
+        setActiveSlides(prev => {
+          const nextAutoSlide = (prev[projectId] + 1) % project.carouselImages!.length;
           return { ...prev, [projectId]: nextAutoSlide };
         });
       }, interval);
@@ -154,16 +145,16 @@ const Projects: React.FC = () => {
 
   const getTagColor = (tag: string) => {
     const tagColors: Record<string, string> = {
-      React: "bg-blue-500/20 text-blue-300 border-blue-500/20",
-      "Next.js": "bg-gray-500/20 text-gray-300 border-gray-500/20",
-      TypeScript: "bg-blue-600/20 text-blue-300 border-blue-600/20",
-      Tailwind: "bg-cyan-500/20 text-cyan-300 border-cyan-500/20",
-      Flutter: "bg-blue-400/20 text-blue-300 border-blue-400/20",
-      Go: "bg-cyan-600/20 text-cyan-300 border-cyan-600/20",
-      PostgreSQL: "bg-blue-700/20 text-blue-300 border-blue-700/20",
-      Dart: "bg-sky-500/20 text-sky-300 border-sky-500/20",
-      "Charm.sh": "bg-pink-500/20 text-pink-300 border-pink-500/20",
-      default: "bg-emerald-500/10 text-emerald-300 border-emerald-500/20",
+      React: 'bg-blue-500/20 text-blue-300 border-blue-500/20',
+      'Next.js': 'bg-gray-500/20 text-gray-300 border-gray-500/20',
+      TypeScript: 'bg-blue-600/20 text-blue-300 border-blue-600/20',
+      Tailwind: 'bg-cyan-500/20 text-cyan-300 border-cyan-500/20',
+      Flutter: 'bg-blue-400/20 text-blue-300 border-blue-400/20',
+      Go: 'bg-cyan-600/20 text-cyan-300 border-cyan-600/20',
+      PostgreSQL: 'bg-blue-700/20 text-blue-300 border-blue-700/20',
+      Dart: 'bg-sky-500/20 text-sky-300 border-sky-500/20',
+      'Charm.sh': 'bg-pink-500/20 text-pink-300 border-pink-500/20',
+      default: 'bg-emerald-500/10 text-emerald-300 border-emerald-500/20',
     };
 
     return tagColors[tag] || tagColors.default;
@@ -182,20 +173,19 @@ const Projects: React.FC = () => {
           className="text-center mb-16"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
+          viewport={{ once: true, margin: '-100px' }}
           transition={{ duration: 0.5 }}
         >
           <h2 className="text-3xl md:text-4xl font-bold text-white">
-            My{" "}
+            My{' '}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-blue-500">
               Projects
             </span>
           </h2>
           <div className="mt-4 h-1 w-20 bg-gradient-to-r from-emerald-400 to-blue-500 mx-auto rounded-full" />
           <p className="mt-6 text-gray-300 max-w-2xl mx-auto">
-            Here&apos;s a selection of projects that showcase my skills and
-            passion for building exceptional digital experiences across
-            different platforms.
+            Here&apos;s a selection of projects that showcase my skills and passion for building
+            exceptional digital experiences across different platforms.
           </p>
         </motion.div>
 
@@ -205,9 +195,9 @@ const Projects: React.FC = () => {
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
+          viewport={{ once: true, margin: '-100px' }}
         >
-          {projects.map((project) => (
+          {projects.map(project => (
             <motion.div
               key={project.id}
               variants={cardVariants}
@@ -219,8 +209,8 @@ const Projects: React.FC = () => {
                 className={`bg-gray-800/30 backdrop-blur-sm rounded-2xl overflow-hidden border transition-all duration-500 h-full flex flex-col
                 ${
                   hoveredProject === project.id
-                    ? "border-emerald-500/50 shadow-xl shadow-emerald-500/10 translate-y-[-5px]"
-                    : "border-gray-700/50 shadow-lg shadow-black/20"
+                    ? 'border-emerald-500/50 shadow-xl shadow-emerald-500/10 translate-y-[-5px]'
+                    : 'border-gray-700/50 shadow-lg shadow-black/20'
                 }`}
               >
                 {/* Project media with overlay */}
@@ -245,19 +235,13 @@ const Projects: React.FC = () => {
                           animate="center"
                           exit="exit"
                           transition={{
-                            x: { duration: 0.4, ease: "easeInOut" },
+                            x: { duration: 0.4, ease: 'easeInOut' },
                           }}
                           className="absolute inset-0"
                         >
                           <Image
-                            src={
-                              project.carouselImages[
-                                activeSlides[project.id] || 0
-                              ]
-                            }
-                            alt={`${project.title} slide ${
-                              activeSlides[project.id] || 0
-                            }`}
+                            src={project.carouselImages[activeSlides[project.id] || 0]}
+                            alt={`${project.title} slide ${activeSlides[project.id] || 0}`}
                             fill
                             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                             className="object-cover"
@@ -269,7 +253,7 @@ const Projects: React.FC = () => {
                       {project.carouselImages.length > 1 && (
                         <>
                           <button
-                            onClick={(e) => {
+                            onClick={e => {
                               e.stopPropagation();
                               navigateCarousel(project.id, -1);
                             }}
@@ -280,7 +264,7 @@ const Projects: React.FC = () => {
                           </button>
 
                           <button
-                            onClick={(e) => {
+                            onClick={e => {
                               e.stopPropagation();
                               navigateCarousel(project.id, 1);
                             }}
@@ -295,25 +279,23 @@ const Projects: React.FC = () => {
                             {project.carouselImages.map((_, index) => (
                               <button
                                 key={index}
-                                onClick={(e) => {
+                                onClick={e => {
                                   e.stopPropagation();
                                   // Set direction based on which indicator was clicked
-                                  const currentIndex =
-                                    activeSlides[project.id] || 0;
-                                  setSlideDirection((prev) => ({
+                                  const currentIndex = activeSlides[project.id] || 0;
+                                  setSlideDirection(prev => ({
                                     ...prev,
-                                    [project.id]:
-                                      index > currentIndex ? "right" : "left",
+                                    [project.id]: index > currentIndex ? 'right' : 'left',
                                   }));
-                                  setActiveSlides((prev) => ({
+                                  setActiveSlides(prev => ({
                                     ...prev,
                                     [project.id]: index,
                                   }));
                                 }}
                                 className={`w-1.5 h-1.5 rounded-full transition-all ${
                                   (activeSlides[project.id] || 0) === index
-                                    ? "bg-emerald-400 w-3"
-                                    : "bg-gray-400/50"
+                                    ? 'bg-emerald-400 w-3'
+                                    : 'bg-gray-400/50'
                                 }`}
                                 aria-label={`Go to slide ${index + 1}`}
                               />
@@ -338,9 +320,7 @@ const Projects: React.FC = () => {
                 <div className="p-6 pt-4 flex flex-col flex-grow">
                   {/* Project title with animated underline */}
                   <div className="flex items-center space-x-2">
-                    <h3 className="text-xl font-semibold text-white">
-                      {project.title}
-                    </h3>
+                    <h3 className="text-xl font-semibold text-white">{project.title}</h3>
                     {/* Project type badge */}
                     {project.type && (
                       <div className="inline-flex items-center justify-center bg-emerald-500/10 text-emerald-300 border-emerald-500/20 text-xs font-semibold px-2 py-0.5 rounded-full shadow-inner">
@@ -350,18 +330,14 @@ const Projects: React.FC = () => {
                   </div>
 
                   {/* Project description */}
-                  <p className="mt-2 text-gray-300 flex-grow">
-                    {project.description}
-                  </p>
+                  <p className="mt-2 text-gray-300 flex-grow">{project.description}</p>
 
                   {/* Technology tags */}
                   <div className="mt-5 flex flex-wrap gap-2">
                     {project.tags.map((tag, tagIndex) => (
                       <span
                         key={tagIndex}
-                        className={`px-2.5 py-1 text-xs rounded-full border ${getTagColor(
-                          tag
-                        )}`}
+                        className={`px-2.5 py-1 text-xs rounded-full border ${getTagColor(tag)}`}
                       >
                         {tag}
                       </span>

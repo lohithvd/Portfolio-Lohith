@@ -14,20 +14,20 @@
  * limitations under the License.
  */
 
-import React, { useEffect, useState } from "react";
-import { motion } from "framer-motion";
-import { ChevronDown, ArrowRight } from "lucide-react";
-import { portfolioConfig } from "@/app/config";
-import { Button } from "@/app/components/button";
-import dynamic from "next/dynamic";
-import { isMinimal } from "@/app/utils";
+import React, { useEffect, useState } from 'react';
+import { motion } from 'framer-motion';
+import { ChevronDown, ArrowRight } from 'lucide-react';
+import { portfolioConfig } from '@/app/config';
+import { Button } from '@/app/components/button';
+import dynamic from 'next/dynamic';
+import { isMinimal } from '@/app/utils';
 
 const TechSphere = dynamic(
   async () => {
     if (isMinimal) {
       return Promise.resolve(() => null);
     }
-    const mod = await import("@/app/components/tech-sphere");
+    const mod = await import('@/app/components/tech-sphere');
     return mod.TechSphere;
   },
   { ssr: false }
@@ -41,7 +41,7 @@ const Home: React.FC<HomeProps> = ({ onConnectClick }) => {
   const config = portfolioConfig.sections.home;
 
   // For the typing effect
-  const [text, setText] = useState("");
+  const [text, setText] = useState('');
   const [index, setIndex] = useState(0);
   const [currentPhrase, setCurrentPhrase] = useState(0);
 
@@ -51,15 +51,15 @@ const Home: React.FC<HomeProps> = ({ onConnectClick }) => {
 
     if (index < config.typingTexts[currentPhrase].length) {
       const timeout = setTimeout(() => {
-        setText((prev) => prev + config.typingTexts[currentPhrase][index]);
+        setText(prev => prev + config.typingTexts[currentPhrase][index]);
         setIndex(index + 1);
       }, 100);
       return () => clearTimeout(timeout);
     } else {
       const timeout = setTimeout(() => {
         setIndex(0);
-        setText("");
-        setCurrentPhrase((prev) => (prev + 1) % config.typingTexts.length);
+        setText('');
+        setCurrentPhrase(prev => (prev + 1) % config.typingTexts.length);
       }, 2000);
       return () => clearTimeout(timeout);
     }
@@ -99,7 +99,7 @@ const Home: React.FC<HomeProps> = ({ onConnectClick }) => {
           className="absolute inset-0 opacity-20"
           style={{
             backgroundImage: `radial-gradient(circle at center, rgba(74, 222, 128, 0.1) 0%, transparent 8%)`,
-            backgroundSize: "40px 40px",
+            backgroundSize: '40px 40px',
           }}
         />
 
@@ -113,7 +113,7 @@ const Home: React.FC<HomeProps> = ({ onConnectClick }) => {
           transition={{
             duration: 20,
             repeat: Infinity,
-            ease: "easeInOut",
+            ease: 'easeInOut',
           }}
         />
 
@@ -126,7 +126,7 @@ const Home: React.FC<HomeProps> = ({ onConnectClick }) => {
           transition={{
             duration: 15,
             repeat: Infinity,
-            ease: "easeInOut",
+            ease: 'easeInOut',
           }}
         />
       </div>
@@ -152,10 +152,7 @@ const Home: React.FC<HomeProps> = ({ onConnectClick }) => {
             </motion.h1>
 
             {/* Animated typing text */}
-            <motion.div
-              variants={itemVariants}
-              className="h-12 mb-8 overflow-hidden"
-            >
+            <motion.div variants={itemVariants} className="h-12 mb-8 overflow-hidden">
               <div className="relative h-full flex items-center justify-center lg:justify-start">
                 {isMinimal ? (
                   // For mobile
@@ -248,13 +245,8 @@ const Home: React.FC<HomeProps> = ({ onConnectClick }) => {
         animate={{ opacity: 1 }}
         transition={{ delay: 1.5 }}
       >
-        <span className="text-gray-400 text-sm mb-2">
-          {config.scrollIndicatorText}
-        </span>
-        <motion.div
-          animate={{ y: [0, 8, 0] }}
-          transition={{ duration: 1.5, repeat: Infinity }}
-        >
+        <span className="text-gray-400 text-sm mb-2">{config.scrollIndicatorText}</span>
+        <motion.div animate={{ y: [0, 8, 0] }} transition={{ duration: 1.5, repeat: Infinity }}>
           <ChevronDown className="text-emerald-400" size={24} />
         </motion.div>
       </motion.div>

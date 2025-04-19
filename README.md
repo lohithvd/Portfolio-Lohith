@@ -186,22 +186,22 @@ Edit `app/config/projects.ts` to showcase your own work:
 export const projects: Project[] = [
   {
     id: 1,
-    title: "Your Project Name",
-    description: "Describe what your project does and its key features",
-    tags: ["React", "TypeScript", "Your Technologies"],
-    githubLink: "https://github.com/yourusername/your-repo",
-    type: "Web App", // Project type (Web, Mobile, Plugin, etc.)
-    liveLink: "https://your-project-url.com", // Optional
-    thumbnail: "https://your-image-url.com/image.jpg", // Main project thumbnail
+    title: 'Your Project Name',
+    description: 'Describe what your project does and its key features',
+    tags: ['React', 'TypeScript', 'Your Technologies'],
+    githubLink: 'https://github.com/yourusername/your-repo',
+    type: 'Web App', // Project type (Web, Mobile, Plugin, etc.)
+    liveLink: 'https://your-project-url.com', // Optional
+    thumbnail: 'https://your-image-url.com/image.jpg', // Main project thumbnail
 
     // Optional: GIF to display when hovering over the project
-    gifUrl: "https://your-project-animation.gif",
+    gifUrl: 'https://your-project-animation.gif',
 
     // Optional: Multiple images for carousel display
     carouselImages: [
-      "https://your-image-url.com/slide1.jpg",
-      "https://your-image-url.com/slide2.jpg",
-      "https://your-image-url.com/slide3.jpg",
+      'https://your-image-url.com/slide1.jpg',
+      'https://your-image-url.com/slide2.jpg',
+      'https://your-image-url.com/slide3.jpg',
     ],
 
     // Optional: Carousel configuration
@@ -221,12 +221,12 @@ Edit `app/config/skills.ts` to reflect your technical expertise:
 ```typescript
 export const skills: Skill[] = [
   {
-    category: "Your Category", // e.g., Frontend, Backend, Mobile
+    category: 'Your Category', // e.g., Frontend, Backend, Mobile
     technologies: [
       {
-        name: "Technology Name",
-        color: "#HexColorCode", // Brand color of the technology
-        icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/technology/technology-original.svg",
+        name: 'Technology Name',
+        color: '#HexColorCode', // Brand color of the technology
+        icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/technology/technology-original.svg',
       },
       // Add more technologies...
     ],
