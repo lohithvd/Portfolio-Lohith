@@ -290,6 +290,7 @@ portfolio/
 │   │   ├── projects.tsx # Projects showcase
 │   │   └── skills.tsx   # Skills display
 │   ├── types/           # TypeScript type definitions
+|   |-- utils/           # Utility functions
 │   ├── globals.css      # Global styles
 │   └── layout.tsx       # Root layout
 └── public/              # Static assets
