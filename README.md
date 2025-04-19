@@ -1,18 +1,17 @@
-# Portfolio
+# Portfolio ✨
 
 <div align="center">
-  <img src="https://raw.githubusercontent.com/PraveenGongada/portfolio/refs/heads/main/docs/images/home.png" alt="Portfolio Home" width="90%" style="border-radius: 12px; margin-bottom: 20px; box-shadow: 0 8px 16px rgba(0,0,0,0.2);" />
+
+[![Deployment](https://img.shields.io/github/deployments/PraveenGongada/portfolio/github-pages?style=flat-square&label=GitHub%20Pages)](https://github.com/PraveenGongada/portfolio/deployments)
+[![Next.js](https://img.shields.io/badge/Next.js-15.1.7-black?style=flat-square&logo=next.js)](https://nextjs.org)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.x-blue?style=flat-square&logo=typescript)](https://www.typescriptlang.org)
+[![Tailwind](https://img.shields.io/badge/Tailwind-3.4.1-38B2AC?style=flat-square&logo=tailwind-css)](https://tailwindcss.com)
+[![License](https://img.shields.io/badge/License-Apache%202.0-green?style=flat-square)](LICENSE)
 
   <div>
-    <div style="display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin-bottom: 10px;">
-      <img src="https://img.shields.io/badge/Next.js-15.1.7-black?style=for-the-badge&logo=next.js" alt="Next.js" />
-      <img src="https://img.shields.io/badge/React-19.0.0-blue?style=for-the-badge&logo=react" alt="React" />
-      <img src="https://img.shields.io/badge/TypeScript-5.x-blue?style=for-the-badge&logo=typescript" alt="TypeScript" />
-      <img src="https://img.shields.io/badge/Tailwind-3.4.1-38B2AC?style=for-the-badge&logo=tailwind-css" alt="Tailwind" />
-      <img src="https://img.shields.io/badge/Framer--Motion-12.4.7-blueviolet?style=for-the-badge&logo=framer" alt="Framer Motion" />
-      <img src="https://img.shields.io/badge/License-Apache%202.0-green?style=for-the-badge" alt="License: Apache 2.0" />
-    </div>
-    <p style="margin: 0; font-size: 16px; color: #eaeaea;">✨ Showcase your skills and projects with this elegant, interactive portfolio template</p>
+    <p></p>
+    <p style="margin: 0; font-size: 16px; color: #eaeaea;">🚀 Showcase your journey with this modern, interactive portfolio template 🌟</p>   <p></p>
+    <img src="https://raw.githubusercontent.com/PraveenGongada/portfolio/refs/heads/main/docs/images/home.png" alt="Portfolio Home" width="90%" style="border-radius: 12px; margin-bottom: 20px; box-shadow: 0 8px 16px rgba(0,0,0,0.2);" />
   </div>
 </div>
 
