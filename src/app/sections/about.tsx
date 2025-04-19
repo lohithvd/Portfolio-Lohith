@@ -20,6 +20,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import { Code, Rocket, Lightbulb, BarChart3 } from "lucide-react";
 import { portfolioConfig } from "@/app/config";
+import { isMinimal } from "@/app/utils";
 
 const About = () => {
   const config = portfolioConfig.sections.about;
@@ -45,14 +46,16 @@ const About = () => {
     },
   };
 
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.6, ease: "easeOut" },
-    },
-  };
+  const itemVariants = isMinimal
+    ? { hidden: {}, visible: {} }
+    : {
+        hidden: { opacity: 0, y: 20 },
+        visible: {
+          opacity: 1,
+          y: 0,
+          transition: { duration: 0.6, ease: "easeOut" },
+        },
+      };
 
   return (
     <section

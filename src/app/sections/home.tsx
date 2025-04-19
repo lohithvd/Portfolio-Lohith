@@ -17,9 +17,21 @@
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { ChevronDown, ArrowRight } from "lucide-react";
-import { TechSphere } from "@/app/components/tech-sphere";
 import { portfolioConfig } from "@/app/config";
 import { Button } from "@/app/components/button";
+import dynamic from "next/dynamic";
+import { isMinimal } from "@/app/utils";
+
+const TechSphere = dynamic(
+  async () => {
+    if (isMinimal) {
+      return Promise.resolve(() => null);
+    }
+    const mod = await import("@/app/components/tech-sphere");
+    return mod.TechSphere;
+  },
+  { ssr: false }
+);
 
 interface HomeProps {
   onConnectClick: (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => void;
@@ -33,22 +45,9 @@ const Home: React.FC<HomeProps> = ({ onConnectClick }) => {
   const [index, setIndex] = useState(0);
   const [currentPhrase, setCurrentPhrase] = useState(0);
 
-  const [shouldAnimate, setShouldAnimate] = useState(true);
-
-  useEffect(() => {
-    const isMobile = window.innerWidth < 768;
-    const prefersReducedMotion = window.matchMedia(
-      "(prefers-reduced-motion: reduce)"
-    ).matches;
-
-    if (isMobile || prefersReducedMotion) {
-      setShouldAnimate(false);
-    }
-  }, []);
-
   // Handle typing effect
   useEffect(() => {
-    if (!shouldAnimate) return;
+    if (isMinimal) return;
 
     if (index < config.typingTexts[currentPhrase].length) {
       const timeout = setTimeout(() => {
@@ -64,7 +63,7 @@ const Home: React.FC<HomeProps> = ({ onConnectClick }) => {
       }, 2000);
       return () => clearTimeout(timeout);
     }
-  }, [shouldAnimate, index, currentPhrase, config.typingTexts]);
+  }, [index, currentPhrase, config.typingTexts]);
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -158,7 +157,7 @@ const Home: React.FC<HomeProps> = ({ onConnectClick }) => {
               className="h-12 mb-8 overflow-hidden"
             >
               <div className="relative h-full flex items-center justify-center lg:justify-start">
-                {!shouldAnimate ? (
+                {isMinimal ? (
                   // For mobile
                   <span className="text-xl sm:text-2xl text-gray-300 flex justify-center flex-wrap">
                     <span className="mr-2">I&apos;m passionate about</span>
@@ -225,20 +224,20 @@ const Home: React.FC<HomeProps> = ({ onConnectClick }) => {
               />
             </motion.div>
           </motion.div>
-
           {/* Interactive Tech Sphere */}
-          <motion.div
-            className="lg:col-span-5 h-[280px] sm:h-[320px] md:h-[340px] lg:h-[350px] relative mt-2 sm:mt-0 mb-16 sm:mb-16"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.7, delay: 0.3 }}
-          >
-            {/* TechSphere component */}
-            <TechSphere />
+          {!isMinimal && (
+            <motion.div
+              className="lg:col-span-5 h-[280px] sm:h-[320px] md:h-[340px] lg:h-[350px] relative mt-2 sm:mt-0 mb-16 sm:mb-16"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.7, delay: 0.3 }}
+            >
+              {/* TechSphere component */}
+              <TechSphere />
 
-            {/* Optional decorative elements that can help frame the sphere */}
-            <div className="absolute -bottom-12 left-1/2 transform -translate-x-1/2 w-48 h-12 bg-gradient-to-t from-gray-900 to-transparent blur-lg"></div>
-          </motion.div>
+              <div className="absolute -bottom-12 left-1/2 transform -translate-x-1/2 w-48 h-12 bg-gradient-to-t from-gray-900 to-transparent blur-lg"></div>
+            </motion.div>
+          )}
         </div>
       </div>
 

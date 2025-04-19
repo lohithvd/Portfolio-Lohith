@@ -56,11 +56,6 @@ const techIcons = [
   "rust",
   "docker",
   "git",
-  "html5",
-  "css3",
-  "sass",
-  "angular",
-  "mongodb",
 ];
 
 const cloudProps = {

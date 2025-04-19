@@ -92,3 +92,15 @@
     max-width: 1536px;
   }
 }
+
+@media (max-width: 768px) {
+  .reduce-motion {
+    transition-duration: 0.1s !important;
+    animation-duration: 0.1s !important;
+  }
+  
+  .no-hover-effect {
+    transform: none !important;
+    transition: none !important;
+  }
+}

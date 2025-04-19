@@ -17,6 +17,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { socials } from "@/app/config/socials";
+import { isMinimal } from "@/app/utils";
 
 const ConnectWithMe: React.FC = () => {
   const containerVariants = {
@@ -30,14 +31,16 @@ const ConnectWithMe: React.FC = () => {
     },
   };
 
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.5, ease: "easeOut" },
-    },
-  };
+  const itemVariants = isMinimal
+    ? { hidden: {}, visible: {} }
+    : {
+        hidden: { opacity: 0, y: 20 },
+        visible: {
+          opacity: 1,
+          y: 0,
+          transition: { duration: 0.5, ease: "easeOut" },
+        },
+      };
 
   const getRgbValues = (hexColor: string) => {
     const hex = hexColor.replace("#", "");

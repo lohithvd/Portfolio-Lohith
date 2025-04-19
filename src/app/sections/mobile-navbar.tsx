@@ -36,19 +36,6 @@ const MobileNavBar: React.FC<MobileNavBarProps> = ({
     open: { opacity: 1, x: 0 },
   };
 
-  const menuItemVariants = {
-    closed: { opacity: 0, x: 20 },
-    open: (i: number) => ({
-      opacity: 1,
-      x: 0,
-      transition: {
-        delay: 0.1 + i * 0.1,
-        duration: 0.4,
-        ease: "easeOut",
-      },
-    }),
-  };
-
   const handleLinkClick = () => {
     setMenuOpen(false);
   };
@@ -82,11 +69,7 @@ const MobileNavBar: React.FC<MobileNavBarProps> = ({
             {/* Nav links */}
             <div className="flex flex-col items-center space-y-8 relative z-10">
               {links.map((link, i) => (
-                <motion.div
-                  key={link.href}
-                  custom={i}
-                  variants={menuItemVariants}
-                >
+                <motion.div key={link.href} custom={i}>
                   <a
                     href={`#${link.href}`}
                     onClick={handleLinkClick}

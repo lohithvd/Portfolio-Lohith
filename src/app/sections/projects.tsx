@@ -20,11 +20,12 @@ import { motion, AnimatePresence } from "framer-motion";
 import { ExternalLink, Github, ChevronLeft, ChevronRight } from "lucide-react";
 import { projects } from "@/app/config/projects";
 import { Button } from "@/app/components/button";
+import { isMinimal } from "@/app/utils";
 
 const Projects: React.FC = () => {
   const [hoveredProject, setHoveredProject] = useState<number | null>(null);
   const [activeSlides, setActiveSlides] = useState<Record<number, number>>({});
-  const carouselTimers = useRef<Record<number, NodeJS.Timeout>>({});
+  const carouselTimer = useRef<NodeJS.Timeout>(undefined);
   const [slideDirection, setSlideDirection] = useState<
     Record<number, "left" | "right">
   >({});
@@ -75,16 +76,13 @@ const Projects: React.FC = () => {
     setSlideDirection(initialDirections);
 
     return () => {
-      Object.values(carouselTimers.current).forEach((timer) => {
-        clearTimeout(timer);
-      });
+      clearTimeout(carouselTimer.current);
     };
   }, []);
 
   useEffect(() => {
-    Object.values(carouselTimers.current).forEach((timer) => {
-      clearTimeout(timer);
-    });
+    if (isMinimal) return;
+    clearTimeout(carouselTimer.current);
 
     if (hoveredProject !== null) {
       const project = projects.find((p) => p.id === hoveredProject);
@@ -93,7 +91,7 @@ const Projects: React.FC = () => {
         const startCarousel = () => {
           const interval = project.carouselConfig?.interval || 3000;
 
-          carouselTimers.current[project.id] = setTimeout(() => {
+          carouselTimer.current = setTimeout(() => {
             setSlideDirection((prev) => ({ ...prev, [project.id]: "right" }));
             setActiveSlides((prev) => {
               const nextSlide =
@@ -112,10 +110,7 @@ const Projects: React.FC = () => {
     }
 
     return () => {
-      const timersToCleanup = { ...carouselTimers.current };
-      Object.values(timersToCleanup).forEach((timer) => {
-        clearTimeout(timer);
-      });
+      clearTimeout(carouselTimer.current);
     };
   }, [hoveredProject, activeSlides]);
 
@@ -123,42 +118,37 @@ const Projects: React.FC = () => {
     const project = projects.find((p) => p.id === projectId);
     if (!project?.carouselImages) return;
 
-    if (carouselTimers.current[projectId]) {
-      clearTimeout(carouselTimers.current[projectId]);
+    if (carouselTimer.current) {
+      clearTimeout(carouselTimer.current);
     }
 
-    // Set animation direction based on navigation direction
-    setSlideDirection((prev) => ({
-      ...prev,
-      [projectId]: direction > 0 ? "right" : "left",
-    }));
+    if (!isMinimal) {
+      setSlideDirection((prev) => ({
+        ...prev,
+        [projectId]: direction > 0 ? "right" : "left",
+      }));
+    }
 
     const imagesCount = project.carouselImages.length;
     const currentSlide = activeSlides[projectId] || 0;
-    let nextSlide = currentSlide + direction;
-
-    if (nextSlide < 0) nextSlide = imagesCount - 1;
-    if (nextSlide >= imagesCount) nextSlide = 0;
+    const nextSlide =
+      (((currentSlide + direction) % imagesCount) + imagesCount) % imagesCount;
 
     setActiveSlides((prev) => ({ ...prev, [projectId]: nextSlide }));
 
     if (
+      !isMinimal &&
       hoveredProject === projectId &&
       project.carouselConfig?.infinite !== false
     ) {
-      const interval = project.carouselConfig?.interval || 3000;
-      // Store the ref value in a local variable for closure
-      const timerId = setTimeout(() => {
-        // Auto-navigation always goes forward
-        setSlideDirection((prev) => ({ ...prev, [projectId]: "right" }));
+      const interval = Math.max(3000, project.carouselConfig?.interval || 3000);
+      carouselTimer.current = setTimeout(() => {
         setActiveSlides((prev) => {
           const nextAutoSlide =
             (prev[projectId] + 1) % project.carouselImages!.length;
           return { ...prev, [projectId]: nextAutoSlide };
         });
       }, interval);
-      
-      carouselTimers.current[projectId] = timerId;
     }
   };
 

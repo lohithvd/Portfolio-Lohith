@@ -18,6 +18,7 @@ import React from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { skills } from "@/app/config/skills";
+import { isMinimal } from "@/app/utils";
 
 const CategoryIcons = {
   Frontend: () => (
@@ -182,10 +183,12 @@ const CategoryIcons = {
 };
 
 const Skills: React.FC = () => {
-  const sectionVariants = {
-    initial: { opacity: 0, y: 20 },
-    animate: { opacity: 1, y: 0 },
-  };
+  const sectionVariants = isMinimal
+    ? { initial: {}, animate: {} }
+    : {
+        initial: { opacity: 0, y: 20 },
+        animate: { opacity: 1, y: 0 },
+      };
 
   const getCategoryIcon = (category: string) => {
     const Icon =
@@ -214,8 +217,8 @@ const Skills: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           className="text-center mb-16"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          initial={isMinimal ? {} : { opacity: 0, y: 20 }}
+          whileInView={isMinimal ? {} : { opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.5 }}
         >
@@ -239,7 +242,9 @@ const Skills: React.FC = () => {
               key={skillGroup.category}
               initial={sectionVariants.initial}
               whileInView={sectionVariants.animate}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
+              transition={
+                isMinimal ? {} : { duration: 0.5, delay: index * 0.1 }
+              }
               viewport={{ once: true, margin: "-100px" }}
               className="bg-gray-800/40 backdrop-blur-sm rounded-2xl p-6 border border-gray-700/50 hover:border-emerald-500/30 transition-all duration-300 shadow-lg"
             >
