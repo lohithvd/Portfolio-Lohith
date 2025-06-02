@@ -146,9 +146,6 @@ const TechSphereComponent = () => {
 
   const customImages: string[] = [];
 
-  const iconCount = renderedIcons ? renderedIcons.length : 0;
-  console.log(`Rendering tech sphere with ${iconCount} technologies`);
-
   return (
     <div className="w-full h-full flex items-center justify-center">
       {renderedIcons && (

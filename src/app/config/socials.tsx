@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-import { Github, Instagram, Linkedin, Mail } from 'lucide-react';
+import { Github, Linkedin, Mail, Twitter } from 'lucide-react';
 import { Social } from '../types/types';
 
 export const socials: Social[] = [
@@ -22,7 +22,7 @@ export const socials: Social[] = [
     name: 'GitHub',
     icon: <Github size={20} />,
     url: 'https://github.com/praveengongada',
-    color: '#333333',
+    color: '#6e7681',
   },
   {
     name: 'LinkedIn',
@@ -37,9 +37,9 @@ export const socials: Social[] = [
     color: '#D44638',
   },
   {
-    name: 'Instagram',
-    icon: <Instagram size={20} />,
-    url: 'https://www.instagram.com/praveen_gongada',
-    color: '#833AB4',
+    name: 'Twitter',
+    icon: <Twitter size={20} />,
+    url: 'https://www.x.com/praveengongada',
+    color: '#1DA1F2',
   },
 ];
