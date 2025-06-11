@@ -6,7 +6,7 @@
   <div>
     <p></p>
     <p style="margin: 0; font-size: 16px; color: #eaeaea;">🚀 Clean, interactive portfolio built with modern tools — designed to land software engineering roles</p>
-    <img src="lohithvarma.netlify.app" alt="Portfolio Home" width="90%" />
+    <img src="https://lohithvarma.netlify.app" alt="Portfolio Home" width="90%" />
   </div>
 </div>
 
