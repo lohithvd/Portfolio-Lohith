@@ -1,74 +1,83 @@
-/*
- * Copyright 2025 Praveen Kumar
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
 import { Project } from '../types/types';
 
 export const projects: Project[] = [
   {
     id: 1,
-    title: 'Shortly',
+    title: 'Student Super Center',
     description:
-      'A comprehensive, modern URL shortener featuring user accounts, link management, and an analytics dashboard.',
-    tags: ['Go', 'PostgreSQL'],
-    githubLink: 'https://github.com/PraveenGongada/Shortly',
-    liveLink: 'https://shortly-go.vercel.app/',
-    type: 'Backend',
-    thumbnail:
-      'https://raw.githubusercontent.com/PraveenGongada/Shortly/refs/heads/main/frontend/docs/images/thumbnail.png',
-    carouselImages: [
-      'https://raw.githubusercontent.com/PraveenGongada/Shortly/refs/heads/main/frontend/docs/images/register.png',
-      'https://raw.githubusercontent.com/PraveenGongada/Shortly/refs/heads/main/frontend/docs/images/dashboard.png',
-      'https://raw.githubusercontent.com/PraveenGongada/Shortly/refs/heads/main/frontend/docs/images/create.png',
-      'https://raw.githubusercontent.com/PraveenGongada/Shortly/refs/heads/main/frontend/docs/images/delete.png',
-    ],
+      'A full stack web app for managing student insurance, housing listings, discounts, and real-time messaging using role-based access.',
+    tags: ['React', 'Node.js', 'PostgreSQL', 'TypeScript', 'JWT', 'Axios'],
+    githubLink: 'https://github.com/lohithvd',
+    liveLink: 'https://github.com/lohithvd',
+    type: 'Full Stack',
+    thumbnail: '/images/placeholders/Thumnail-project1.jpg',
+    carouselImages: [],
     carouselConfig: {
-      interval: 2000,
+      interval: 2500,
       infinite: true,
     },
   },
   {
     id: 2,
-    title: 'Catalyst',
+    title: 'Insurance Eligibility Chatbot',
     description:
-      'Elegant TUI tool for triggering GitHub Actions workflows with matrix configurations for mobile app deployments.',
-    tags: ['Go', 'Charm.sh'],
-    githubLink: 'https://github.com/PraveenGongada/Catalyst',
-    liveLink: '',
-    type: 'CLI',
-    thumbnail:
-      'https://raw.githubusercontent.com/PraveenGongada/Catalyst/refs/heads/main/docs/images/deployment-summary.png',
-    gifUrl:
-      'https://raw.githubusercontent.com/PraveenGongada/Catalyst/refs/heads/main/docs/images/catalyst-demo.gif',
+      'A GPT-4-powered chatbot built using Flask and React that suggests insurance plans based on user demographics and eligibility data.',
+    tags: ['React', 'Flask', 'GPT-4', 'Redis', 'AWS', 'CloudWatch'],
+    githubLink: 'https://github.com/lohithvd',
+    liveLink: 'https://github.com/lohithvd',
+    type: 'AI + Backend',
+    thumbnail: '/images/placeholders/Thumnail-project1.jpg',
+    carouselImages: [],
+    carouselConfig: {
+      interval: 2500,
+      infinite: true,
+    },
   },
   {
     id: 3,
-    title: 'MovieDB',
+    title: 'Loan Refinance Rate Analyzer',
     description:
-      'A cinema app featuring intuitive browsing and comprehensive movie details with seamless user experience.',
-    tags: ['Flutter', 'Dart'],
-    githubLink: 'https://github.com/PraveenGongada/MovieDB',
-    type: 'App',
-    thumbnail:
-      'https://raw.githubusercontent.com/PraveenGongada/MovieDB/refs/heads/main/docs/images/thumbnail.png',
-    carouselImages: [
-      'https://raw.githubusercontent.com/PraveenGongada/MovieDB/refs/heads/main/docs/images/home.png',
-      'https://raw.githubusercontent.com/PraveenGongada/MovieDB/refs/heads/main/docs/images/movie.png',
-    ],
+      'A full stack tool for comparing real-time loan refinance rates using external APIs, backend scoring logic, and predictive dashboards.',
+    tags: ['Node.js', 'Python', 'MongoDB', 'React', 'JWT', 'GitHub Actions'],
+    githubLink: 'https://github.com/lohithvd',
+    liveLink: 'https://github.com/lohithvd',
+    type: 'Finance Tool',
+    thumbnail: '/images/placeholders/Thumnail-project1.jpg',
+    carouselImages: [],
     carouselConfig: {
-      interval: 2000,
+      interval: 2500,
+      infinite: true,
+    },
+  },
+  {
+    id: 4,
+    title: 'Car Service Tracker (Mobile App)',
+    description:
+      'A cross-platform React Native app for users to log, track, and schedule car maintenance using Firebase for real-time sync.',
+    tags: ['React Native', 'Firebase', 'Firestore', 'Mobile', 'Admin Portal'],
+    githubLink: 'https://github.com/lohithvd',
+    liveLink: 'https://github.com/lohithvd',
+    type: 'Mobile App',
+    thumbnail: '/images/placeholders/Thumnail-project1.jpg',
+    carouselImages: [],
+    carouselConfig: {
+      interval: 2500,
+      infinite: true,
+    },
+  },
+  {
+    id: 5,
+    title: 'Repair Cost Estimator API',
+    description:
+      'A Flask microservice that estimates vehicle repair costs using parts/labor databases, deployed with AWS Lambda + DynamoDB.',
+    tags: ['Flask', 'AWS Lambda', 'DynamoDB', 'Pytest', 'API'],
+    githubLink: 'https://github.com/lohithvd',
+    liveLink: 'https://github.com/lohithvd',
+    type: 'Backend API',
+    thumbnail: '/images/placeholders/Thumnail-project1.jpg',
+    carouselImages: [],
+    carouselConfig: {
+      interval: 2500,
       infinite: true,
     },
   },
