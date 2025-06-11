@@ -2,11 +2,6 @@
 
 <div align="center">
 
-[![Deployment](https://img.shields.io/github/deployments/lohithvd/Portfolio-Lohith/github-pages?style=flat-square&label=GitHub%20Pages)](https://github.com/lohithvd/Portfolio-Lohith/deployments)
-[![Next.js](https://img.shields.io/badge/Next.js-15.1.7-black?style=flat-square&logo=next.js)](https://nextjs.org)
-[![TypeScript](https://img.shields.io/badge/TypeScript-5.x-blue?style=flat-square&logo=typescript)](https://www.typescriptlang.org)
-[![Tailwind](https://img.shields.io/badge/Tailwind-3.4.1-38B2AC?style=flat-square&logo=tailwind-css)](https://tailwindcss.com)
-[![License](https://img.shields.io/badge/License-Apache%202.0-green?style=flat-square)](LICENSE)
 
   <div>
     <p></p>
@@ -17,12 +12,7 @@
 
 ## 📸 Screenshots
 
-<div align="center">
-  <img src="<!-- Add about section screenshot -->" alt="About Section" width="90%" />
-  <img src="<!-- Add projects section screenshot -->" alt="Projects Section" width="90%" />
-  <img src="<!-- Add skills section screenshot -->" alt="Skills Section" width="90%" />
-  <img src="<!-- Add connect section screenshot -->" alt="Connect Section" width="90%" />
-</div>
+
 
 ---
 
@@ -68,7 +58,5 @@ This is the personal portfolio of **Lohith Varma Dommaraju**, built to showcase 
 - Simple, animated interface to reach out
 - Recruiter-friendly messaging
 
----
 
-## 📁 Folder Structure
 
